@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>솔라팜(주) 영농형 태양광 사전검토 신청</title>
+<style>
+  body{margin:0;font:18px/1.6 "Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:#F3F6EF;color:#18241A;
+       display:grid;place-items:center;min-height:100vh;padding:0 16px;text-align:center}
+  b{color:#2F6B3A}
+  a{display:inline-block;margin-top:14px;background:#2F6B3A;color:#fff;text-decoration:none;font-weight:700;
+    padding:14px 26px;border-radius:12px}
+</style>
+<script>
+  /* ===== 여기 한 줄만 바꾸면 됩니다: 배포 관리 화면의 웹 앱 URL (…/exec) ===== */
+  var APP = "https://script.google.com/macros/s/AKfycbwcsnnZy3BTp61JraEsfZlZFgEpApTWxAXHpSFJWwkCHGAknORuVmOIcYCyHOklnis/exec";
+  /* ======================================================================== */
+
+  // 이 파일을 GitHub 저장소에 index.html 과 404.html 두 이름으로 똑같이 올립니다.
+  //  - 새 QR : HTTPS://아이디.GITHUB.IO/C027        (주소 끝 경로가 세미나번호 → 404.html 이 받아서 넘김)
+  //  - 예전 QR: https://아이디.github.io/?s=S261010-01 (index.html 이 받아서 넘김)
+  var RE = /^([A-Z]\d{3}|S\d{6}-\d{2})$/;
+  var norm = function (x) { try { x = decodeURIComponent(x || ""); } catch (e) {} return String(x).toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 20); };
+  var fromQuery = norm(new URLSearchParams(location.search).get("s"));
+  var fromPath = norm(location.pathname.split("/").filter(Boolean).pop());
+  var s = RE.test(fromQuery) ? fromQuery : (RE.test(fromPath) ? fromPath : "");
+  var target = APP + (s ? "?s=" + encodeURIComponent(s) : "");
+  if (APP.indexOf("https://script.google.com/") === 0) location.replace(target);
+</script>
+</head>
+<body>
+  <div>
+    <p><b>솔라팜(주)</b> 영농형 태양광 사전검토 신청 화면으로 이동합니다…</p>
+    <a id="go" href="#">자동으로 넘어가지 않으면 여기를 누르세요</a>
+  </div>
+  <script>document.getElementById("go").href = target;</script>
+</body>
+</html>
